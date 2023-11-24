@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "menu_items",
+  "info": {
+    "singularName": "menu-item",
+    "pluralName": "menu-items",
+    "displayName": "MenuItem",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "itemNaam": {
+      "type": "string"
+    },
+    "Prijs": {
+      "type": "integer"
+    },
+    "Beschrijving": {
+      "type": "richtext"
+    },
+    "Afbeelding": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::menu.menu"
+    }
+  }
+}
