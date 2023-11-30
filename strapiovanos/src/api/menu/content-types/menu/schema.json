@@ -13,6 +13,36 @@
   "attributes": {
     "SoortMenu": {
       "type": "string"
+    },
+    "hoofdgerechts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hoofdgerecht.hoofdgerecht",
+      "mappedBy": "menu"
+    },
+    "nagerechts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nagerecht.nagerecht",
+      "mappedBy": "menu"
+    },
+    "koudedranks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::koudedrank.koudedrank",
+      "mappedBy": "menu"
+    },
+    "warmedranks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::warmedrank.warmedrank",
+      "mappedBy": "menu"
+    },
+    "voorgerechts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::voorgerecht.voorgerecht",
+      "mappedBy": "menu"
     }
   }
 }

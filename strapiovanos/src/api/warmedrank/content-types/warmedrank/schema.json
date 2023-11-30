@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "warmedranken",
+  "info": {
+    "singularName": "warmedrank",
+    "pluralName": "warmedranken",
+    "displayName": "Warmedrank"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Naam": {
+      "type": "string"
+    },
+    "Prijs": {
+      "type": "integer"
+    },
+    "Foto": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "Beschrijving": {
+      "type": "richtext"
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu.menu",
+      "inversedBy": "warmedranks"
+    }
+  }
+}
