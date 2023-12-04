@@ -790,6 +790,11 @@ export interface ApiMenuMenu extends Schema.CollectionType {
       'oneToMany',
       'api::voorgerecht.voorgerecht'
     >;
+    ontbijtgerechts: Attribute.Relation<
+      'api::menu.menu',
+      'oneToMany',
+      'api::ontbijtgerecht.ontbijtgerecht'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -870,6 +875,45 @@ export interface ApiNagerechtNagerecht extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::nagerecht.nagerecht',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOntbijtgerechtOntbijtgerecht extends Schema.CollectionType {
+  collectionName: 'ontbijtgerechten';
+  info: {
+    singularName: 'ontbijtgerecht';
+    pluralName: 'ontbijtgerechten';
+    displayName: 'ontbijtgerecht';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    Prijs: Attribute.Integer;
+    Foto: Attribute.Media;
+    menu: Attribute.Relation<
+      'api::ontbijtgerecht.ontbijtgerecht',
+      'manyToOne',
+      'api::menu.menu'
+    >;
+    Beschrijving: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ontbijtgerecht.ontbijtgerecht',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ontbijtgerecht.ontbijtgerecht',
       'oneToOne',
       'admin::user'
     > &
@@ -1006,6 +1050,7 @@ declare module '@strapi/types' {
       'api::menu.menu': ApiMenuMenu;
       'api::menu-item.menu-item': ApiMenuItemMenuItem;
       'api::nagerecht.nagerecht': ApiNagerechtNagerecht;
+      'api::ontbijtgerecht.ontbijtgerecht': ApiOntbijtgerechtOntbijtgerecht;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
       'api::voorgerecht.voorgerecht': ApiVoorgerechtVoorgerecht;
       'api::warmedrank.warmedrank': ApiWarmedrankWarmedrank;

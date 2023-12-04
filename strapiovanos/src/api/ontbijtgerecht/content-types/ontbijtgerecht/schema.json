@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ontbijtgerechten",
+  "info": {
+    "singularName": "ontbijtgerecht",
+    "pluralName": "ontbijtgerechten",
+    "displayName": "ontbijtgerecht",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Prijs": {
+      "type": "integer"
+    },
+    "Foto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu.menu",
+      "inversedBy": "ontbijtgerechts"
+    },
+    "Beschrijving": {
+      "type": "richtext"
+    }
+  }
+}

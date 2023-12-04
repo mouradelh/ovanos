@@ -43,6 +43,12 @@
       "relation": "oneToMany",
       "target": "api::voorgerecht.voorgerecht",
       "mappedBy": "menu"
+    },
+    "ontbijtgerechts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ontbijtgerecht.ontbijtgerecht",
+      "mappedBy": "menu"
     }
   }
 }
