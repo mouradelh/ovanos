@@ -10,5 +10,5 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Strapi>
 ) {
-  res.status(200).json({ data.})
+  
 }

@@ -1,7 +1,7 @@
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { Navigation } from "@/components/navigation"
-import buttons from '@/components/button.module.css'
+import buttons from "@/styles/button.module.css"
 
 interface ButtonProps {
     title: string,
@@ -28,7 +28,7 @@ export default function Menu() {
         <Navigation></Navigation>
         <main>
             <h1>Menu</h1>
-            <Button></Button>
+            <Button title="u" url="y"></Button>
         </main>
         <Footer></Footer>
         </>
