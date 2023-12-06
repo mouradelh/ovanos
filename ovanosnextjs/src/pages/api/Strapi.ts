@@ -1,34 +1,32 @@
 export interface Strapi {
-    data: StrapiData;
+    data: Datum[];
     meta: Meta;
 }
 
-export interface StrapiData {
+export interface Datum {
     id:         number;
-    attributes: PurpleAttributes;
+    attributes: DatumAttributes;
 }
 
-export interface PurpleAttributes {
+export interface DatumAttributes {
     Naam:         string;
-    Prijs:        number;
     Beschrijving: string;
     createdAt:    Date;
     updatedAt:    Date;
-    publishedAt:  null;
-    Foto:         Foto;
-    menu:         Menu;
+    publishedAt:  Date;
+    Afbeelding:   Afbeelding;
 }
 
-export interface Foto {
-    data: FotoData;
+export interface Afbeelding {
+    data: Data;
 }
 
-export interface FotoData {
+export interface Data {
     id:         number;
-    attributes: FluffyAttributes;
+    attributes: DataAttributes;
 }
 
-export interface FluffyAttributes {
+export interface DataAttributes {
     name:              string;
     alternativeText:   null;
     caption:           null;
@@ -36,8 +34,8 @@ export interface FluffyAttributes {
     height:            number;
     formats:           Formats;
     hash:              string;
-    ext:               string;
-    mime:              string;
+    ext:               EXT;
+    mime:              MIME;
     size:              number;
     url:               string;
     previewUrl:        null;
@@ -45,6 +43,10 @@ export interface FluffyAttributes {
     provider_metadata: null;
     createdAt:         Date;
     updatedAt:         Date;
+}
+
+export enum EXT {
+    PNG = ".png",
 }
 
 export interface Formats {
@@ -57,8 +59,8 @@ export interface Formats {
 export interface Large {
     name:   string;
     hash:   string;
-    ext:    string;
-    mime:   string;
+    ext:    EXT;
+    mime:   MIME;
     path:   null;
     width:  number;
     height: number;
@@ -66,21 +68,17 @@ export interface Large {
     url:    string;
 }
 
-export interface Menu {
-    data: MenuData;
-}
-
-export interface MenuData {
-    id:         number;
-    attributes: TentacledAttributes;
-}
-
-export interface TentacledAttributes {
-    SoortMenu:   string;
-    createdAt:   Date;
-    updatedAt:   Date;
-    publishedAt: null;
+export enum MIME {
+    ImagePNG = "image/png",
 }
 
 export interface Meta {
+    pagination: Pagination;
+}
+
+export interface Pagination {
+    page:      number;
+    pageSize:  number;
+    pageCount: number;
+    total:     number;
 }

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "menus",
+  "collectionName": "warme_dranken",
   "info": {
-    "singularName": "menu",
-    "pluralName": "menus",
-    "displayName": "Menu"
+    "singularName": "warme-drank",
+    "pluralName": "warme-dranken",
+    "displayName": "Warme Dranken"
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +16,9 @@
     },
     "Beschrijving": {
       "type": "richtext"
+    },
+    "Prijs": {
+      "type": "decimal"
     },
     "Afbeelding": {
       "allowedTypes": [

@@ -677,82 +677,6 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiHoofdgerechtHoofdgerecht extends Schema.CollectionType {
-  collectionName: 'hoofdgerechts';
-  info: {
-    singularName: 'hoofdgerecht';
-    pluralName: 'hoofdgerechts';
-    displayName: 'Hoofdgerecht';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Naam: Attribute.String;
-    Prijs: Attribute.Integer;
-    Foto: Attribute.Media;
-    Beschrijving: Attribute.RichText;
-    menu: Attribute.Relation<
-      'api::hoofdgerecht.hoofdgerecht',
-      'manyToOne',
-      'api::menu.menu'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::hoofdgerecht.hoofdgerecht',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::hoofdgerecht.hoofdgerecht',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiKoudedrankKoudedrank extends Schema.CollectionType {
-  collectionName: 'koudedranken';
-  info: {
-    singularName: 'koudedrank';
-    pluralName: 'koudedranken';
-    displayName: 'Koudedrank';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Naam: Attribute.String;
-    Prijs: Attribute.Integer;
-    Foto: Attribute.Media;
-    Beschrijving: Attribute.RichText;
-    menu: Attribute.Relation<
-      'api::koudedrank.koudedrank',
-      'manyToOne',
-      'api::menu.menu'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::koudedrank.koudedrank',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::koudedrank.koudedrank',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiMenuMenu extends Schema.CollectionType {
   collectionName: 'menus';
   info: {
@@ -764,37 +688,9 @@ export interface ApiMenuMenu extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    SoortMenu: Attribute.String;
-    hoofdgerechts: Attribute.Relation<
-      'api::menu.menu',
-      'oneToMany',
-      'api::hoofdgerecht.hoofdgerecht'
-    >;
-    nagerechts: Attribute.Relation<
-      'api::menu.menu',
-      'oneToMany',
-      'api::nagerecht.nagerecht'
-    >;
-    koudedranks: Attribute.Relation<
-      'api::menu.menu',
-      'oneToMany',
-      'api::koudedrank.koudedrank'
-    >;
-    warmedranks: Attribute.Relation<
-      'api::menu.menu',
-      'oneToMany',
-      'api::warmedrank.warmedrank'
-    >;
-    voorgerechts: Attribute.Relation<
-      'api::menu.menu',
-      'oneToMany',
-      'api::voorgerecht.voorgerecht'
-    >;
-    ontbijtgerechts: Attribute.Relation<
-      'api::menu.menu',
-      'oneToMany',
-      'api::ontbijtgerecht.ontbijtgerecht'
-    >;
+    Naam: Attribute.String;
+    Beschrijving: Attribute.RichText;
+    Afbeelding: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -805,223 +701,32 @@ export interface ApiMenuMenu extends Schema.CollectionType {
   };
 }
 
-export interface ApiMenuItemMenuItem extends Schema.SingleType {
-  collectionName: 'menu_items';
+export interface ApiWarmeDrankWarmeDrank extends Schema.CollectionType {
+  collectionName: 'warme_dranken';
   info: {
-    singularName: 'menu-item';
-    pluralName: 'menu-items';
-    displayName: 'MenuItem';
-    description: '';
+    singularName: 'warme-drank';
+    pluralName: 'warme-dranken';
+    displayName: 'Warme Dranken';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    itemNaam: Attribute.String;
-    Prijs: Attribute.Integer;
+    Naam: Attribute.String;
     Beschrijving: Attribute.RichText;
+    Prijs: Attribute.Decimal;
     Afbeelding: Attribute.Media;
-    menu: Attribute.Relation<
-      'api::menu-item.menu-item',
-      'oneToOne',
-      'api::menu.menu'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::menu-item.menu-item',
+      'api::warme-drank.warme-drank',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::menu-item.menu-item',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiNagerechtNagerecht extends Schema.CollectionType {
-  collectionName: 'nagerechts';
-  info: {
-    singularName: 'nagerecht';
-    pluralName: 'nagerechts';
-    displayName: 'Nagerecht';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Name: Attribute.String;
-    Prijs: Attribute.Integer;
-    Foto: Attribute.Media;
-    Beschrijving: Attribute.RichText;
-    menu: Attribute.Relation<
-      'api::nagerecht.nagerecht',
-      'manyToOne',
-      'api::menu.menu'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::nagerecht.nagerecht',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::nagerecht.nagerecht',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiOntbijtgerechtOntbijtgerecht extends Schema.CollectionType {
-  collectionName: 'ontbijtgerechten';
-  info: {
-    singularName: 'ontbijtgerecht';
-    pluralName: 'ontbijtgerechten';
-    displayName: 'ontbijtgerecht';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Name: Attribute.String;
-    Prijs: Attribute.Integer;
-    Foto: Attribute.Media;
-    menu: Attribute.Relation<
-      'api::ontbijtgerecht.ontbijtgerecht',
-      'manyToOne',
-      'api::menu.menu'
-    >;
-    Beschrijving: Attribute.RichText;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::ontbijtgerecht.ontbijtgerecht',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::ontbijtgerecht.ontbijtgerecht',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiRestaurantRestaurant extends Schema.CollectionType {
-  collectionName: 'restaurants';
-  info: {
-    singularName: 'restaurant';
-    pluralName: 'restaurants';
-    displayName: 'Restaurant';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Description: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::restaurant.restaurant',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::restaurant.restaurant',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiVoorgerechtVoorgerecht extends Schema.CollectionType {
-  collectionName: 'voorgerechten';
-  info: {
-    singularName: 'voorgerecht';
-    pluralName: 'voorgerechten';
-    displayName: 'Voorgerecht';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Naam: Attribute.String;
-    Prijs: Attribute.Integer;
-    Foto: Attribute.Media;
-    Beschrijving: Attribute.RichText;
-    menu: Attribute.Relation<
-      'api::voorgerecht.voorgerecht',
-      'manyToOne',
-      'api::menu.menu'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::voorgerecht.voorgerecht',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::voorgerecht.voorgerecht',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiWarmedrankWarmedrank extends Schema.CollectionType {
-  collectionName: 'warmedranken';
-  info: {
-    singularName: 'warmedrank';
-    pluralName: 'warmedranken';
-    displayName: 'Warmedrank';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Naam: Attribute.String;
-    Prijs: Attribute.Integer;
-    Foto: Attribute.Media;
-    Beschrijving: Attribute.RichText;
-    menu: Attribute.Relation<
-      'api::warmedrank.warmedrank',
-      'manyToOne',
-      'api::menu.menu'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::warmedrank.warmedrank',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::warmedrank.warmedrank',
+      'api::warme-drank.warme-drank',
       'oneToOne',
       'admin::user'
     > &
@@ -1045,15 +750,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::hoofdgerecht.hoofdgerecht': ApiHoofdgerechtHoofdgerecht;
-      'api::koudedrank.koudedrank': ApiKoudedrankKoudedrank;
       'api::menu.menu': ApiMenuMenu;
-      'api::menu-item.menu-item': ApiMenuItemMenuItem;
-      'api::nagerecht.nagerecht': ApiNagerechtNagerecht;
-      'api::ontbijtgerecht.ontbijtgerecht': ApiOntbijtgerechtOntbijtgerecht;
-      'api::restaurant.restaurant': ApiRestaurantRestaurant;
-      'api::voorgerecht.voorgerecht': ApiVoorgerechtVoorgerecht;
-      'api::warmedrank.warmedrank': ApiWarmedrankWarmedrank;
+      'api::warme-drank.warme-drank': ApiWarmeDrankWarmeDrank;
     }
   }
 }
