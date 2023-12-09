@@ -71,7 +71,7 @@ export default function Menu() {
         <Navigation></Navigation>
         <main className="bg-gradient-to-r from-cyan-500 to-blue-500">
             <h1 className="text-center font-extrabold">Menu</h1>
-            <div className="flex">
+            <div className="flex flex-wrap space-x-4 space-y-3 justify-center">
             {menuData &&
             menuData.data.map((item) => (
             <Card
@@ -84,7 +84,6 @@ export default function Menu() {
           )
         )}
             </div>
-            
         </main>
         <Footer></Footer>
         </>

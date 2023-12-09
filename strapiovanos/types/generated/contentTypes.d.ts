@@ -691,6 +691,11 @@ export interface ApiMenuMenu extends Schema.CollectionType {
     Naam: Attribute.String;
     Beschrijving: Attribute.RichText;
     Afbeelding: Attribute.Media;
+    warme_drankens: Attribute.Relation<
+      'api::menu.menu',
+      'oneToMany',
+      'api::warme-drank.warme-drank'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -707,6 +712,7 @@ export interface ApiWarmeDrankWarmeDrank extends Schema.CollectionType {
     singularName: 'warme-drank';
     pluralName: 'warme-dranken';
     displayName: 'Warme Dranken';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -716,6 +722,11 @@ export interface ApiWarmeDrankWarmeDrank extends Schema.CollectionType {
     Beschrijving: Attribute.RichText;
     Prijs: Attribute.Decimal;
     Afbeelding: Attribute.Media;
+    menu: Attribute.Relation<
+      'api::warme-drank.warme-drank',
+      'manyToOne',
+      'api::menu.menu'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

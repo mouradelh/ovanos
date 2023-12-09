@@ -26,6 +26,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "warme_drankens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::warme-drank.warme-drank",
+      "mappedBy": "menu"
     }
   }
 }
