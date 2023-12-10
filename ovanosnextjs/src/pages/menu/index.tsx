@@ -79,7 +79,7 @@ export default function Menu() {
               title={item.attributes.Naam}
               subtitle={item.attributes.Beschrijving}
               imageUrl={`http://localhost:1337${item.attributes.Afbeelding.data.attributes.formats.large.url}`}
-              link="/"
+              link={`/menu/${item.attributes.Naam}`}
             />
           )
         )}
