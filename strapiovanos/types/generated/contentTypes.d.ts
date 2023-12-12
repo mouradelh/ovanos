@@ -677,6 +677,41 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogpostBlogpost extends Schema.CollectionType {
+  collectionName: 'blogposts';
+  info: {
+    singularName: 'blogpost';
+    pluralName: 'blogposts';
+    displayName: 'Blogpost';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Text: Attribute.Blocks;
+    Image: Attribute.Media;
+    Datum: Attribute.Date;
+    KorteBeschrijving: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::blogpost.blogpost',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::blogpost.blogpost',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMenuMenu extends Schema.CollectionType {
   collectionName: 'menus';
   info: {
@@ -761,6 +796,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::blogpost.blogpost': ApiBlogpostBlogpost;
       'api::menu.menu': ApiMenuMenu;
       'api::warme-drank.warme-drank': ApiWarmeDrankWarmeDrank;
     }
