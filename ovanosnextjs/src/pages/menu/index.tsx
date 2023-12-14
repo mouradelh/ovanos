@@ -72,7 +72,7 @@ export default function Menu() {
         <main className="bg-gradient-to-r from-cyan-500 to-blue-500 mb-0 pb-0">
             <h1 className="text-center font-extrabold">Menu</h1>
             <div className="flex flex-wrap space-x-4 space-y-3 justify-center">
-            {menuData &&
+            {menuData && menuData.data &&
             menuData.data.map((item) => (
             <Card
               key={item.id}
