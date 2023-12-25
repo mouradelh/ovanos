@@ -5,7 +5,6 @@ import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { useEffect, useState } from 'react'
 import { Blogposts } from '@/interfaces/blogpost'
-import qs from 'qs'
 import assert from 'assert'
 import { RecentBlogPosts } from './api/hello'
 
@@ -44,10 +43,9 @@ export interface BlogPostCardProps {
   title: string,
   description: string,
   imageUrl: string,
-  buttonText: string
 }
 
-export function BlogpostCard({id, title, description, imageUrl, buttonText}: BlogPostCardProps) {
+export function BlogpostCard({id, title, description, imageUrl}: BlogPostCardProps) {
   return(
     <div className="max-w-lg mx-auto">
       <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
@@ -65,12 +63,27 @@ export function BlogpostCard({id, title, description, imageUrl, buttonText}: Blo
             <p className="font-normal text-gray-700 mb-3">{description}</p>
             <Link href={`/blog/${id}`} legacyBehavior>
             <a className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center">
-                {buttonText}
+                Lees meer
             </a>
             </Link>
         </div>
       </div>
     </div>
+  )
+}
+
+export function RecentBlogPostCard({title, description, imageUrl, id}: BlogPostCardProps) {
+  return(
+    <Link legacyBehavior href={"/"}>
+    <a key={id} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100">
+      <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={imageUrl} alt={title}/>
+      <div className="flex flex-col justify-between p-4 leading-normal">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{title}</h5>
+        <p className="mb-3 font-normal text-gray-700 ">{description}</p>
+      </div>
+    </a>
+    </Link>
+    
   )
 }
 
@@ -85,11 +98,16 @@ export function BlogPosts() {
     console.log(blogposts);
   },[])
   return(
-    <>
-    {blogposts && blogposts.data && blogposts.data.map((blog) => (
-      <BlogpostCard key={blog.id} id={blog.id} title={blog.attributes.Title} description={blog.attributes.KorteBeschrijving} imageUrl={`http://localhost:1337${blog.attributes.Image?.data.attributes.formats.small.url}`} buttonText='Lees Meer'></BlogpostCard>
-    ))}
-    </>
+    <div className='justify-center py-6'>
+    {blogposts && blogposts.data && blogposts.data.length > 0 && (
+      <RecentBlogPostCard
+        id={blogposts.data[0].id}
+        title={blogposts.data[0].attributes.Title}
+        description={blogposts.data[0].attributes.KorteBeschrijving}
+        imageUrl={`http://localhost:1337${blogposts.data[0].attributes.Image?.data.attributes.formats.small.url}`}
+    />
+    )}
+    </div>
   )
 }
 
@@ -106,7 +124,7 @@ export default function Home() {
           <div className="text-center mb-8">
             <button className="bg-blue-500 text-white px-4 py-2 rounded"><a href="/menu">Ons Menu</a></button>
           </div>
-          <h2 className='text-center font-extrabold'>Recente blogposts</h2>
+          <h2 className='text-center font-extrabold'>Recentste Blogpost</h2>
           <div className='flex flex-row'>
           <BlogPosts></BlogPosts>
           </div>
