@@ -15,9 +15,6 @@
     "Title": {
       "type": "string"
     },
-    "Text": {
-      "type": "blocks"
-    },
     "Image": {
       "type": "media",
       "multiple": false,
@@ -34,6 +31,9 @@
     },
     "KorteBeschrijving": {
       "type": "string"
+    },
+    "PostText": {
+      "type": "richtext"
     }
   }
 }

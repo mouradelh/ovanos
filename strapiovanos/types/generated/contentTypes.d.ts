@@ -690,10 +690,10 @@ export interface ApiBlogpostBlogpost extends Schema.CollectionType {
   };
   attributes: {
     Title: Attribute.String;
-    Text: Attribute.Blocks;
     Image: Attribute.Media;
     Datum: Attribute.Date;
     KorteBeschrijving: Attribute.String;
+    PostText: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -708,6 +708,29 @@ export interface ApiBlogpostBlogpost extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLogoLogo extends Schema.SingleType {
+  collectionName: 'logos';
+  info: {
+    singularName: 'logo';
+    pluralName: 'logos';
+    displayName: 'logo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Naam: Attribute.String;
+    Afbeelding: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::logo.logo', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::logo.logo', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -797,6 +820,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::blogpost.blogpost': ApiBlogpostBlogpost;
+      'api::logo.logo': ApiLogoLogo;
       'api::menu.menu': ApiMenuMenu;
       'api::warme-drank.warme-drank': ApiWarmeDrankWarmeDrank;
     }

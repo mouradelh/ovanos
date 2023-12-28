@@ -78,7 +78,7 @@ export default function Menu() {
               key={item.id}
               title={item.attributes.Naam}
               subtitle={item.attributes.Beschrijving}
-              imageUrl={`http://localhost:1337${item.attributes.Afbeelding.data.attributes.formats.large.url}`}
+              imageUrl={`http://localhost:1337${item.attributes.Afbeelding?.data.attributes.formats.large.url}`}
               link={`/menu/${item.attributes.Naam}`}
             />
           )

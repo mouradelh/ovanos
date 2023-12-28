@@ -158,7 +158,7 @@ export default function Post() {
         <Header></Header>
         <Navigation></Navigation>
         <main className="bg-gradient-to-r from-cyan-500 to-blue-500">
-            <h2 className="text-center">{router.query.id}</h2>
+            <h2 className="text-center font-extrabold text-lg">{router.query.id}</h2>
         <div className="flex flex-wrap space-x-4 justify-center">
   {menuItems && menuItems.data && menuItems.data.map((item, index) => (
     <MenuItem

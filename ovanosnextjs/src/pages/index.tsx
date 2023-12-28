@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react'
 import { Blogposts } from '@/interfaces/blogpost'
 import assert from 'assert'
 import { RecentBlogPosts } from './api/hello'
+require('dotenv').config();
+const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT;
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -95,7 +97,6 @@ export function BlogPosts() {
       setBlogPosts(recentBlogPosts);
     }
     fetchBlogs();
-    console.log(blogposts);
   },[])
   return(
     <div className='justify-center py-6'>

@@ -5,6 +5,36 @@ import { SinglePost } from "@/interfaces/singlePost";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
+interface PostComponentProps {
+    title: string,
+    datum: string,
+    imageUrl: string,
+    beschrijving: string
+}
+
+export function PostComponent({ title, datum, imageUrl, beschrijving }: PostComponentProps) {
+    return (
+      <div className="text-center">
+        <article className="prose prose-gray mx-auto dark:prose-invert">
+          <div className="space-y-2 not-prose">
+            <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl lg:leading-[3.5rem]">
+              {title}
+            </h1>
+            <p className="text-gray-500 dark:text-gray-400">{datum}</p>
+          </div>
+          <img
+            alt={title}
+            className="mx-auto aspect-video overflow-hidden rounded-lg object-cover"
+            src={`http://localhost:1337${imageUrl}`}
+          />
+          <p className="mt-4">
+            {beschrijving}
+          </p>
+        </article>
+      </div>
+    );
+  }
+
 export default function BlogPost() {
     const router = useRouter();
     const [blogPost, setBlogPost] = useState<SinglePost>();
@@ -28,8 +58,16 @@ export default function BlogPost() {
         <Header></Header>
         <Navigation></Navigation>
         <main>
-        <p>{blogPost?.data.attributes.Title}</p>
+        {blogPost && blogPost.data && 
+        <PostComponent 
+            title={blogPost.data.attributes.Title} 
+            imageUrl={blogPost.data.attributes.Image.data.attributes.formats.medium.url} 
+            datum={blogPost.data.attributes.Datum} 
+            beschrijving={blogPost.data.attributes.KorteBeschrijving}>
+        </PostComponent>
+        }
         </main>
+        
         <Footer></Footer>
         </>
     )
