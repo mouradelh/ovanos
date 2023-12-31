@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medewerkers",
+  "info": {
+    "singularName": "medewerker",
+    "pluralName": "medewerkers",
+    "displayName": "Medewerker"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Naam": {
+      "type": "string"
+    },
+    "Biografie": {
+      "type": "text"
+    },
+    "Afbeelding": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

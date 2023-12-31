@@ -76,7 +76,8 @@ export function BlogpostCard({id, title, description, imageUrl}: BlogPostCardPro
 
 export function RecentBlogPostCard({title, description, imageUrl, id}: BlogPostCardProps) {
   return(
-    <Link legacyBehavior href={`/blog/${id}`}>
+    <div>
+      <Link legacyBehavior href={`/blog/${id}`}>
     <a key={id} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 text-center">
       <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={imageUrl} alt={title}/>
       <div className="p-4 leading-normal">
@@ -85,6 +86,8 @@ export function RecentBlogPostCard({title, description, imageUrl, id}: BlogPostC
       </div>
     </a>
     </Link>
+    </div>
+    
     
   )
 }
@@ -99,7 +102,7 @@ export function BlogPosts() {
     fetchBlogs();
   },[])
   return(
-    <div className='justify-center py-6'>
+    <>
     {blogposts && blogposts.data && blogposts.data.length > 0 && (
       <RecentBlogPostCard
         id={blogposts.data[0].id}
@@ -108,7 +111,7 @@ export function BlogPosts() {
         imageUrl={`http://localhost:1337${blogposts.data[0].attributes.Image?.data.attributes.formats.small.url}`}
     />
     )}
-    </div>
+    </>
   )
 }
 
@@ -117,7 +120,7 @@ export default function Home() {
     <>
         <Header></Header>
         <Navigation></Navigation>
-        <main className="container mx-auto p-4">
+        <main className="container mx-auto p-4 ">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold">Ovanos</h1>
             <p className="max-w-2xl mx-auto">Welkom bij Ovanos, waar elke maaltijd een meesterwerk is en genieten een kunst. Begin je dag met heerlijk ontbijt, bereid met verse ingrediënten. Ontdek onze diverse lunch- en dineropties, waar smaken van over de hele wereld samenkomen. Sluit je culinaire reis af met verleidelijke desserts die de perfecte finishing touch bieden. Bij Ovanos is elke hap een viering van smaak en gezelligheid. Ontdek de onvergetelijke eetervaring die we te bieden hebben.</p>

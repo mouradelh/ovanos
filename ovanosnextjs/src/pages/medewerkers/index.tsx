@@ -1,57 +1,54 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Navigation } from "@/components/navigation";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { AllMedewerkers } from "../api/hello";
+import { Medewerker } from "@/interfaces/medewerker";
 
-export function PersoneelsKaart() {
+export interface Personeel {
+    id: number,
+    naam: string,
+    biografie: string,
+    imageUrl: string,
+}
+
+export function PersoneelsKaart({id, naam, biografie, imageUrl}: Personeel) {
     return(
         <>
-        <div className="flex items-center h-screen w-full justify-center">
-
-<div className="max-w-xs">
-    <div className="bg-white shadow-xl rounded-lg py-3">
-        <div className="photo-wrapper p-2">
-            <img className="w-32 h-32 rounded-full mx-auto" src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp" alt="John Doe"/>
-        </div>
-        <div className="p-2">
-            <h3 className="text-center text-xl text-gray-900 font-medium leading-8">Joh Doe</h3>
-            <div className="text-center text-gray-400 text-xs font-semibold">
-                <p>Web Developer</p>
+        <div key={id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <img className="rounded-t-lg" src={`http://localhost:1337${imageUrl}`} alt={naam} />
+            </a>
+            <div className="p-5">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{naam}</h5>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{biografie}</p>
             </div>
-            <table className="text-xs my-3">
-                <tbody><tr>
-                    <td className="px-2 py-2 text-gray-500 font-semibold">Address</td>
-                    <td className="px-2 py-2">Chatakpur-3, Dhangadhi Kailali</td>
-                </tr>
-                <tr>
-                    <td className="px-2 py-2 text-gray-500 font-semibold">Phone</td>
-                    <td className="px-2 py-2">+977 9955221114</td>
-                </tr>
-                <tr>
-                    <td className="px-2 py-2 text-gray-500 font-semibold">Email</td>
-                    <td className="px-2 py-2">john@exmaple.com</td>
-                </tr>
-            </tbody></table>
-
-            <div className="text-center my-3">
-                <a className="text-xs text-indigo-500 italic hover:underline hover:text-indigo-600 font-medium" href="#">View Profile</a>
-            </div>
-
         </div>
-    </div>
-</div>
-
-</div>
         </>
     )
 }
 
 export default function Medewerkers() {
+    const [medewerkers , setMedewerkers] = useState<Medewerker>();
+    useEffect(() => {
+        const fetchMedewerkers = async() => {
+            const medewerkers = await AllMedewerkers();
+            setMedewerkers(medewerkers);
+        }
+        fetchMedewerkers();
+        console.log(medewerkers);
+    },[])
     return(
         <>
         <Header></Header>
         <Navigation></Navigation>
         <h1>Medewerkers</h1>
-        <PersoneelsKaart></PersoneelsKaart>
+        <div className="flex flex-wrap space-x-3 justify-center">
+            {medewerkers && medewerkers.data && medewerkers.data.map((medewerker) => (
+                <PersoneelsKaart id={medewerker.id} naam={medewerker.attributes.Naam} biografie={medewerker.attributes.Biografie} imageUrl={medewerker.attributes.Afbeelding.data.attributes.formats.small.url} ></PersoneelsKaart>
+            ))}
+        </div>
         <Footer></Footer>
         </>
     )

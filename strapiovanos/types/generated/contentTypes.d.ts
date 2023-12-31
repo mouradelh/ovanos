@@ -735,6 +735,38 @@ export interface ApiLogoLogo extends Schema.SingleType {
   };
 }
 
+export interface ApiMedewerkerMedewerker extends Schema.CollectionType {
+  collectionName: 'medewerkers';
+  info: {
+    singularName: 'medewerker';
+    pluralName: 'medewerkers';
+    displayName: 'Medewerker';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Naam: Attribute.String;
+    Biografie: Attribute.Text;
+    Afbeelding: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::medewerker.medewerker',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::medewerker.medewerker',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMenuMenu extends Schema.CollectionType {
   collectionName: 'menus';
   info: {
@@ -821,6 +853,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::blogpost.blogpost': ApiBlogpostBlogpost;
       'api::logo.logo': ApiLogoLogo;
+      'api::medewerker.medewerker': ApiMedewerkerMedewerker;
       'api::menu.menu': ApiMenuMenu;
       'api::warme-drank.warme-drank': ApiWarmeDrankWarmeDrank;
     }

@@ -4,6 +4,18 @@ import { Strapi } from './Strapi';
 import { Menu } from '../menu/[id]';
 import { Blogposts } from '@/interfaces/blogpost';
 import qs from 'qs'
+import { Logo } from '@/interfaces/logo';
+import { Medewerker } from '@/interfaces/medewerker';
+
+export const LogoImage = async():Promise<Logo> => {
+  const params = {
+    populate: '*'
+  };
+  const queryString = qs.stringify(params);
+  const res = await fetch(`http://localhost:1337/api/logo?${queryString}`);
+  const logo : Logo = await res.json();
+  return logo
+}
 
 export const MenuLijst = async ():Promise<Strapi> => {
   const params = {
@@ -27,7 +39,7 @@ export const RecentBlogPosts = async():Promise<Blogposts> => {
     populate: '*'
   };
   const queryString = qs.stringify(params);
-  const url = `http://localhost:1337/api/blogposts/?${queryString}`;
+  const url = `http://localhost:1337/api/blogposts?${queryString}`;
   const res = await fetch(url);
   const data : Blogposts = await res.json();
   return data
@@ -38,12 +50,21 @@ export const AllBlogPosts = async():Promise<Blogposts> => {
     populate : '*'
   };
   const queryString = qs.stringify(params);
-  const url = `http://localhost:1337/api/blogposts/?${queryString}`;
+  const url = `http://localhost:1337/api/blogposts?${queryString}`;
   const res = await fetch(url);
   const data : Blogposts = await res.json();
   return data
 }
-
+export const AllMedewerkers = async():Promise<Medewerker> => {
+  const params = {
+    populate : '*'
+  };
+  const queryString = qs.stringify(params);
+  const url = `http://localhost:1337/api/medewerkers?${queryString}`;
+  const res = await fetch(url);
+  const data : Medewerker = await res.json();
+  return data
+}
 
 
 
