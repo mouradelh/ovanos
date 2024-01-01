@@ -4,7 +4,6 @@ import Link from "next/link";
 import { MenuItems } from "../api/hello";
 import { Header } from "@/components/header";
 import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
 
 
 export interface Menu {
@@ -170,7 +169,6 @@ export default function Post() {
   ))}
 </div>
         </main>
-        <Footer></Footer>
         </>
     )
 }

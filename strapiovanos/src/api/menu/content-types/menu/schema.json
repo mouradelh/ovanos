@@ -27,10 +27,40 @@
       "type": "media",
       "multiple": false
     },
+    "koude_drankens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::koudedrank.koudedrank",
+      "mappedBy": "menu"
+    },
+    "dessertens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dessert.dessert",
+      "mappedBy": "menu"
+    },
     "warme_drankens": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::warme-drank.warme-drank",
+      "target": "api::warmedrank.warmedrank",
+      "mappedBy": "menu"
+    },
+    "hoofdgerechtens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hoofdgerecht.hoofdgerecht",
+      "mappedBy": "menu"
+    },
+    "voorgerechtens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::voorgerecht.voorgerecht",
+      "mappedBy": "menu"
+    },
+    "soepens": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::soep.soep",
       "mappedBy": "menu"
     }
   }

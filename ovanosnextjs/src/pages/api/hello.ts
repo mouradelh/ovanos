@@ -1,11 +1,11 @@
 
 import { GetServerSideProps } from 'next';
-import { Strapi } from './Strapi';
 import { Menu } from '../menu/[id]';
 import { Blogposts } from '@/interfaces/blogpost';
 import qs from 'qs'
 import { Logo } from '@/interfaces/logo';
 import { Medewerker } from '@/interfaces/medewerker';
+import { Strapi } from '@/interfaces/Strapi';
 
 export const LogoImage = async():Promise<Logo> => {
   const params = {

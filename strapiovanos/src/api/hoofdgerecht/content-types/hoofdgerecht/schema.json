@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hoofdgerechten",
+  "info": {
+    "singularName": "hoofdgerecht",
+    "pluralName": "hoofdgerechten",
+    "displayName": "Hoofdgerechten"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Naam": {
+      "type": "string"
+    },
+    "Afbeelding": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "Prijs": {
+      "type": "decimal"
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu.menu",
+      "inversedBy": "hoofdgerechtens"
+    }
+  }
+}

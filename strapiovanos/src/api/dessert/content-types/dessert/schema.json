@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "desserten",
+  "info": {
+    "singularName": "dessert",
+    "pluralName": "desserten",
+    "displayName": "Desserten"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Naam": {
+      "type": "string"
+    },
+    "Afbeelding": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "Prijs": {
+      "type": "decimal"
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu.menu",
+      "inversedBy": "dessertens"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "koudedranken",
+  "info": {
+    "singularName": "koudedrank",
+    "pluralName": "koudedranken",
+    "displayName": "Koude Dranken",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Naam": {
+      "type": "string"
+    },
+    "Afbeelding": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Prijs": {
+      "type": "decimal"
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu.menu",
+      "inversedBy": "koude_drankens"
+    }
+  }
+}

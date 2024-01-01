@@ -1,11 +1,10 @@
-import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { Navigation } from "@/components/navigation"
 import { Url } from "next/dist/shared/lib/router/router"
 import Link from "next/link"
 import { MenuLijst } from "../api/hello"
 import {useEffect, useState} from 'react'
-import { Strapi } from "../api/Strapi"
+import { Strapi } from "@/interfaces/Strapi"
 
 interface ButtonProps {
     title: string,
@@ -79,13 +78,12 @@ export default function Menu() {
               title={item.attributes.Naam}
               subtitle={item.attributes.Beschrijving}
               imageUrl={`http://localhost:1337${item.attributes.Afbeelding?.data.attributes.formats.large.url}`}
-              link={`/menu/${item.attributes.Naam}`}
+              link={`/menu/${item.attributes.Naam.toLowerCase().replace(" ","")}`}
             />
           )
         )}
             </div>
         </main>
-        <Footer></Footer>
         </>
     )
 }

@@ -2,7 +2,6 @@ import { Header } from '@/components/header'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { Navigation } from '@/components/navigation'
-import { Footer } from '@/components/footer'
 import { useEffect, useState } from 'react'
 import { Blogposts } from '@/interfaces/blogpost'
 import assert from 'assert'
@@ -133,7 +132,6 @@ export default function Home() {
           
           <Info></Info>
         </main>
-        <Footer></Footer>
     </>
   )
 }

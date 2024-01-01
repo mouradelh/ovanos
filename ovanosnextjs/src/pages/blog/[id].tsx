@@ -1,4 +1,3 @@
-import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Navigation } from "@/components/navigation";
 import { SinglePost } from "@/interfaces/singlePost";
@@ -62,13 +61,11 @@ export default function BlogPost() {
         <PostComponent 
             title={blogPost.data.attributes.Title} 
             imageUrl={blogPost.data.attributes.Image.data.attributes.formats.medium.url} 
-            datum={blogPost.data.attributes.Datum} 
+            datum={blogPost.data.attributes.Datum.toString()} 
             beschrijving={blogPost.data.attributes.KorteBeschrijving}>
         </PostComponent>
         }
         </main>
-        
-        <Footer></Footer>
         </>
     )
 }

@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "soepen",
+  "info": {
+    "singularName": "soep",
+    "pluralName": "soepen",
+    "displayName": "Soepen"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Naam": {
+      "type": "string"
+    },
+    "Prijs": {
+      "type": "decimal"
+    },
+    "Afbeelding": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu.menu",
+      "inversedBy": "soepens"
+    }
+  }
+}

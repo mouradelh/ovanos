@@ -1,4 +1,3 @@
-import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { Navigation } from "@/components/navigation"
 import { Blogposts } from "@/interfaces/blogpost"
@@ -61,8 +60,7 @@ export function BlogPost() {
                     <BlogCard
                         id={post.id}
                         title={post.attributes.Title} 
-                        datum={post.attributes.Datum} 
-                        link="#" 
+                        datum={post.attributes.Datum.toString()} 
                         imageUrl={post.attributes.Image.data.attributes.formats.small.url} 
                         korteBeschrijving={post.attributes.KorteBeschrijving}>
                     </BlogCard>
@@ -82,7 +80,6 @@ export default function Blog() {
           <h1 className="text-center text-4xl font-bold">Blog Posts</h1>
             {BlogPost()}
         </main>
-        <Footer></Footer>
         </>
     )
 }
