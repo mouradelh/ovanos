@@ -4,7 +4,7 @@ import { Blogposts } from "@/interfaces/blogpost"
 import { link } from "fs"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { AllBlogPosts } from "../api/hello"
+import { AllBlogPosts } from "../api/apiService"
 import { BlogPosts } from ".."
 
 interface BlogCardProps {
@@ -20,7 +20,7 @@ export function BlogCard({title, datum, imageUrl, korteBeschrijving, id}:BlogCar
     <div className="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
       <div className="flex flex-col space-y-1.5 p-6">
         <h1 className="text-2xl font-bold">{title}</h1>
-        <p className="text-gray-500">Posted on {datum}</p>
+        <p className="text-gray-500">Geplaatst op {datum}</p>
       </div>
       <div className="p-6">
         <img
@@ -34,7 +34,7 @@ export function BlogCard({title, datum, imageUrl, korteBeschrijving, id}:BlogCar
         <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary underline-offset-4 hover:underline h-10 px-4 py-2">
           <Link legacyBehavior href={`/blog/${id}`}>
           <a className="text-blue-500 hover:underline">
-            Read More
+            Lees meer
           </a>
           </Link>
         </button>
@@ -77,7 +77,7 @@ export default function Blog() {
         <Header></Header>
         <Navigation></Navigation>
         <main>
-          <h1 className="text-center text-4xl font-bold">Blog Posts</h1>
+          <h1 className="text-center text-4xl font-bold">Blogs</h1>
             {BlogPost()}
         </main>
         </>

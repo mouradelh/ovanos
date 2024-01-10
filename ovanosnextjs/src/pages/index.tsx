@@ -5,7 +5,7 @@ import { Navigation } from '@/components/navigation'
 import { useEffect, useState } from 'react'
 import { Blogposts } from '@/interfaces/blogpost'
 import assert from 'assert'
-import { RecentBlogPosts } from './api/hello'
+import { RecentBlogPosts } from './api/apiService'
 require('dotenv').config();
 const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT;
 
@@ -117,21 +117,29 @@ export function BlogPosts() {
 export default function Home() {
   return (
     <>
-        <Header></Header>
-        <Navigation></Navigation>
-        <main className="container mx-auto p-4 ">
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold">Ovanos</h1>
-            <p className="max-w-2xl mx-auto">Welkom bij Ovanos, waar elke maaltijd een meesterwerk is en genieten een kunst. Begin je dag met heerlijk ontbijt, bereid met verse ingrediënten. Ontdek onze diverse lunch- en dineropties, waar smaken van over de hele wereld samenkomen. Sluit je culinaire reis af met verleidelijke desserts die de perfecte finishing touch bieden. Bij Ovanos is elke hap een viering van smaak en gezelligheid. Ontdek de onvergetelijke eetervaring die we te bieden hebben.</p>
+      <Header></Header>
+      <Navigation></Navigation>
+      <main className="mx-auto p-4 ">
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-bold">Ovanos</h1>
+          <p className="max-w-2xl mx-auto">
+            Welkom bij Ovanos, waar elke maaltijd een meesterwerk is en genieten een kunst. Begin je dag met heerlijk ontbijt, bereid met verse ingrediënten. Ontdek onze diverse lunch- en dineropties, waar smaken van over de hele wereld samenkomen. Sluit je culinaire reis af met verleidelijke desserts die de perfecte finishing touch bieden. Bij Ovanos is elke hap een viering van smaak en gezelligheid. Ontdek de onvergetelijke eetervaring die we te bieden hebben.
+          </p>
+        </div>
+        <div className="text-center mb-8">
+          <button className="bg-blue-500 text-white px-4 py-2 rounded">
+            <a href="/menu">Ons Menu</a>
+          </button>
+        </div>
+        <h2 className="text-center font-extrabold">Recentste Blogpost</h2>
+        <div className="flex justify-center">
+          <div className="max-w-lg">
+            <BlogPosts></BlogPosts>
           </div>
-          <div className="text-center mb-8">
-            <button className="bg-blue-500 text-white px-4 py-2 rounded"><a href="/menu">Ons Menu</a></button>
-          </div>
-          <h2 className='text-center font-extrabold'>Recentste Blogpost</h2>
-          <BlogPosts></BlogPosts>
-          
-          <Info></Info>
-        </main>
+        </div>
+        <Info></Info>
+      </main>
     </>
-  )
+  );
 }
+

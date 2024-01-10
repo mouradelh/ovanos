@@ -2,7 +2,7 @@ import { Header } from "@/components/header";
 import { Navigation } from "@/components/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AllMedewerkers } from "../api/hello";
+import { AllMedewerkers } from "../api/apiService";
 import { Medewerker } from "@/interfaces/medewerker";
 
 export interface Personeel {
@@ -40,7 +40,7 @@ export default function Medewerkers() {
         <>
         <Header></Header>
         <Navigation></Navigation>
-        <h1>Medewerkers</h1>
+        <h1 className="text-center font-bold">Medewerkers</h1>
         <div className="flex flex-wrap space-x-3 justify-center">
             {medewerkers && medewerkers.data && medewerkers.data.map((medewerker) => (
                 <PersoneelsKaart id={medewerker.id} naam={medewerker.attributes.Naam} biografie={medewerker.attributes.Biografie} imageUrl={medewerker.attributes.Afbeelding.data.attributes.formats.small.url} ></PersoneelsKaart>

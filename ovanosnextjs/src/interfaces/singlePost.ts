@@ -17,8 +17,14 @@ export interface PurpleAttributes {
     publishedAt:       Date;
     KorteBeschrijving: string;
     Image:             Image;
+    PostText:          string;
+    ArticleText: ArticleText[];
 }
-
+interface ArticleText {
+    type: string;
+    children: Child[];
+    level?: number;
+  }
 export interface Image {
     data: ImageData;
 }

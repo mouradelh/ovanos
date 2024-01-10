@@ -2,7 +2,7 @@ import { Header } from "@/components/header"
 import { Navigation } from "@/components/navigation"
 import { Url } from "next/dist/shared/lib/router/router"
 import Link from "next/link"
-import { MenuLijst } from "../api/hello"
+import { MenuLijst } from "../api/apiService"
 import {useEffect, useState} from 'react'
 import { Strapi } from "@/interfaces/Strapi"
 
@@ -68,7 +68,7 @@ export default function Menu() {
         <>
         <Header></Header>
         <Navigation></Navigation>
-        <main className="bg-gradient-to-r from-cyan-500 to-blue-500 mb-0 pb-0">
+        <main className=" mb-0 pb-0">
             <h1 className="text-center font-extrabold">Menu</h1>
             <div className="flex flex-wrap space-x-4 space-y-3 justify-center">
             {menuData && menuData.data &&
