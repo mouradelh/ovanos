@@ -1,4 +1,4 @@
-import { Logo } from "@/interfaces/Logo";
+import { Logo } from "@/interfaces/logo";
 import { LogoImage } from "@/pages/api/apiService";
 import Link from "next/link"
 import { useEffect, useState } from "react"

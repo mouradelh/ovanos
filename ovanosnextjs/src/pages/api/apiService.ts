@@ -1,9 +1,9 @@
 
 import { GetServerSideProps } from 'next';
 import qs from 'qs'
-import { Strapi } from '@/interfaces/Strapi';
+import { Strapi } from '@/interfaces/strapi';
 import { env } from 'process';
-import { Menu } from '@/interfaces/Menu';
+import { Menu } from '@/interfaces/menu';
 import { Logo } from '@/interfaces/logo';
 import { Blogposts } from '@/interfaces/blogpost';
 import { Medewerker } from '@/interfaces/medewerker';

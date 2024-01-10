@@ -4,7 +4,7 @@ import { Url } from "next/dist/shared/lib/router/router"
 import Link from "next/link"
 import { MenuLijst } from "../api/apiService"
 import {useEffect, useState} from 'react'
-import { Strapi } from "@/interfaces/Strapi"
+import { Strapi } from "@/interfaces/strapi"
 
 interface ButtonProps {
     title: string,

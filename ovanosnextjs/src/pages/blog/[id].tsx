@@ -1,6 +1,6 @@
 import { Header } from "@/components/header";
 import { Navigation } from "@/components/navigation";
-import { SinglePost } from "@/interfaces/singlePost";
+import { SinglePost } from "@/interfaces/singlepost";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
