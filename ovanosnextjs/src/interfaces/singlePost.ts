@@ -1,4 +1,4 @@
-export interface SinglePost {
+export interface SinglePostStrapi {
     data: SinglePostData;
     meta: Meta;
 }

@@ -1,4 +1,4 @@
-export interface Blogposts {
+export interface BlogpostsData {
     data: Datum[];
     meta: Meta;
 }

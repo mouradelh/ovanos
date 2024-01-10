@@ -1,4 +1,4 @@
-export interface Strapi {
+export interface StrapiData {
     data: Datum[];
     meta: Meta;
 }

@@ -4,7 +4,7 @@ import { link } from "fs"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { AllBlogPosts } from "../api/apiService"
-import { Blogposts } from "../../interfaces/Blogpost"
+import { BlogpostsData } from "../../interfaces/Blogpost"
 
 interface BlogCardProps {
     id: number,
@@ -43,7 +43,7 @@ export function BlogCard({title, datum, imageUrl, korteBeschrijving, id}:BlogCar
 }
 
 export function BlogPost() {
-    const [blogPosts, setBlogPosts] = useState<Blogposts>();
+    const [blogPosts, setBlogPosts] = useState<BlogpostsData>();
     useEffect(() => {
         const getBlogPosts = async() => {
             const res = await AllBlogPosts();

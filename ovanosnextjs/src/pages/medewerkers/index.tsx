@@ -3,7 +3,7 @@ import { Navigation } from "@/components/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AllMedewerkers } from "../api/apiService";
-import { Medewerker } from "@/interfaces/Medewerker";
+import { Medewerkers } from "@/interfaces/Medewerker";
 
 export interface Personeel {
     id: number,
@@ -27,7 +27,7 @@ export function PersoneelsKaart({id, naam, biografie, imageUrl}: Personeel) {
 }
 
 export default function Medewerkers() {
-    const [medewerkers , setMedewerkers] = useState<Medewerker>();
+    const [medewerkers , setMedewerkers] = useState<Medewerkers>();
     useEffect(() => {
         const fetchMedewerkers = async() => {
             const medewerkers = await AllMedewerkers();

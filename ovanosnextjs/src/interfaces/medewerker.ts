@@ -1,4 +1,4 @@
-export interface Medewerker {
+export interface Medewerkers {
     data: Datum[];
     meta: Meta;
 }

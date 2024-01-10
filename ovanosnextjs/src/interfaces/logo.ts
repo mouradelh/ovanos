@@ -1,4 +1,4 @@
-export interface Logo {
+export interface LogoData {
     data: LogoData;
     meta: Meta;
 }

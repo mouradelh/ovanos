@@ -1,6 +1,6 @@
 import { Header } from "@/components/header";
 import { Navigation } from "@/components/navigation";
-import { SinglePost } from "@/interfaces/SinglePost";
+import { SinglePostStrapi } from "@/interfaces/Singlepost";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -38,12 +38,12 @@ export function PostComponent({ title, datum, imageUrl, beschrijving }: PostComp
 
 export default function BlogPost() {
     const router = useRouter();
-    const [blogPost, setBlogPost] = useState<SinglePost>();
+    const [blogPost, setBlogPost] = useState<SinglePostStrapi>();
     useEffect(() => {
         const fetchPost = async () => {
             if (router.query.id) {
                 let res = await fetch(`http://localhost:1337/api/blogposts/${router.query.id}?populate=*`);
-                let data : SinglePost = await res.json();
+                let data : SinglePostStrapi = await res.json();
                 setBlogPost(data);
             }
         };

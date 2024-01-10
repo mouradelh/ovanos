@@ -1,42 +1,42 @@
 
 import { GetServerSideProps } from 'next';
 import qs from 'qs'
-import { Strapi } from '@/interfaces/Strapi';
+import { StrapiData } from '@/interfaces/Strapi';
 import { env } from 'process';
-import { Menu } from '@/interfaces/Menu';
-import { Logo } from '@/interfaces/Logo';
-import { Blogposts } from '@/interfaces/Blogpost';
-import { Medewerker } from '@/interfaces/Medewerker';
+import { MenuData } from '@/interfaces/Menu';
+import { LogoData } from '@/interfaces/Logo';
+import { BlogpostsData } from '@/interfaces/Blogpost';
+import { Medewerkers } from '@/interfaces/Medewerker';
 
 const serverEndpoint = process.env.SERVER_ENDPOINT || 'localhost'
 
-export const LogoImage = async():Promise<Logo> => {
+export const LogoImage = async():Promise<LogoData> => {
   const params = {
     populate: '*'
   };
   const queryString = qs.stringify(params);
   const res = await fetch(`http://${serverEndpoint}:1337/api/logo?${queryString}`);
-  const logo : Logo = await res.json();
+  const logo : LogoData = await res.json();
   return logo
 }
 
-export const MenuLijst = async ():Promise<Strapi> => {
+export const MenuLijst = async ():Promise<StrapiData> => {
   const params = {
     populate : '*'
   };
   const queryString = qs.stringify(params);
   const res = await fetch(`http://${serverEndpoint}:1337/api/menus?${queryString}`);
-  const menu : Strapi = await res.json();
+  const menu : StrapiData = await res.json();
   return menu
 }
 
-export const MenuItems = async(routerquery: string):Promise<Menu> => {
+export const MenuItems = async(routerquery: string):Promise<MenuData> => {
   const res = await fetch(`http://${serverEndpoint}:1337/api/${routerquery}?populate=*`);
-  const menu : Menu = await res.json();
+  const menu : MenuData = await res.json();
   return menu
 }
 
-export const RecentBlogPosts = async():Promise<Blogposts> => {
+export const RecentBlogPosts = async():Promise<BlogpostsData> => {
   const params = {
     sort: 'publishedAt:desc',
     populate: '*'
@@ -44,28 +44,28 @@ export const RecentBlogPosts = async():Promise<Blogposts> => {
   const queryString = qs.stringify(params);
   const url = `http://${serverEndpoint}:1337/api/blogposts?${queryString}`;
   const res = await fetch(url);
-  const data : Blogposts = await res.json();
+  const data : BlogpostsData = await res.json();
   return data
 }
 
-export const AllBlogPosts = async():Promise<Blogposts> => {
+export const AllBlogPosts = async():Promise<BlogpostsData> => {
   const params = {
     populate : '*'
   };
   const queryString = qs.stringify(params);
   const url = `http://${serverEndpoint}:1337/api/blogposts?${queryString}`;
   const res = await fetch(url);
-  const data : Blogposts = await res.json();
+  const data : BlogpostsData = await res.json();
   return data
 }
-export const AllMedewerkers = async():Promise<Medewerker> => {
+export const AllMedewerkers = async():Promise<Medewerkers> => {
   const params = {
     populate : '*'
   };
   const queryString = qs.stringify(params);
   const url = `http://${serverEndpoint}:1337/api/medewerkers?${queryString}`;
   const res = await fetch(url);
-  const data : Medewerker = await res.json();
+  const data : Medewerkers = await res.json();
   return data
 }
 
