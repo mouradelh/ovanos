@@ -4,19 +4,19 @@ import qs from 'qs'
 import { StrapiData } from '@/interfaces/Strapi';
 import { env } from 'process';
 import { MenuData } from '@/interfaces/Menu';
-import { LogoData } from '@/interfaces/Logo';
+import { LogoDatas } from '@/interfaces/Logo';
 import { BlogpostsData } from '@/interfaces/Blogpost';
 import { Medewerkers } from '@/interfaces/Medewerker';
 
 const serverEndpoint = process.env.SERVER_ENDPOINT || 'localhost'
 
-export const LogoImage = async():Promise<LogoData> => {
+export const LogoImage = async():Promise<LogoDatas> => {
   const params = {
     populate: '*'
   };
   const queryString = qs.stringify(params);
   const res = await fetch(`http://${serverEndpoint}:1337/api/logo?${queryString}`);
-  const logo : LogoData = await res.json();
+  const logo : LogoDatas = await res.json();
   return logo
 }
 

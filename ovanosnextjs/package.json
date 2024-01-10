@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
-    "build": "next build && tailwindcss build styles/gloabls.css -o public/styles.css",
+    "build": "next build && tailwindcss build src/styles/globals.css -o public/styles.css",
     "start": "next start",
     "lint": "next lint"
   },
