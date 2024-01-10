@@ -5,7 +5,7 @@ import { Navigation } from '@/components/navigation'
 import { useEffect, useState } from 'react'
 import assert from 'assert'
 import { RecentBlogPosts } from './api/apiService'
-import { Blogposts } from '@/interfaces/Blogpost'
+import { BlogpostsData } from '@/interfaces/Blogpost'
 require('dotenv').config();
 const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT;
 
@@ -92,7 +92,7 @@ export function RecentBlogPostCard({title, description, imageUrl, id}: BlogPostC
 }
 
 export function BlogPosts() {
-  const [blogposts, setBlogPosts] = useState<Blogposts>();
+  const [blogposts, setBlogPosts] = useState<BlogpostsData>();
   useEffect(() => {
     const fetchBlogs = async() => {
       const recentBlogPosts = await RecentBlogPosts();
