@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "ovanosnextjs/*",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "strapiovanos/api/$1" },
+      { "src": "/(.*)", "dest": "ovanosnextjs/$1" }
+    ]
+  }
+  
