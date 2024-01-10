@@ -32,8 +32,8 @@
     "KorteBeschrijving": {
       "type": "string"
     },
-    "PostText": {
-      "type": "richtext"
+    "ArticleText": {
+      "type": "blocks"
     }
   }
 }

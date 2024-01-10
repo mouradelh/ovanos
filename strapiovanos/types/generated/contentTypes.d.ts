@@ -693,7 +693,7 @@ export interface ApiBlogpostBlogpost extends Schema.CollectionType {
     Image: Attribute.Media;
     Datum: Attribute.Date;
     KorteBeschrijving: Attribute.String;
-    PostText: Attribute.RichText;
+    ArticleText: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
