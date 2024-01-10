@@ -4,7 +4,7 @@ import { Url } from "next/dist/shared/lib/router/router"
 import Link from "next/link"
 import { MenuLijst } from "../api/apiService"
 import {useEffect, useState} from 'react'
-import { Strapi } from "@/interfaces/Strapi"
+import { StrapiData } from "@/interfaces/Strapi"
 
 interface ButtonProps {
     title: string,
@@ -54,7 +54,7 @@ export function Card({title, subtitle, imageUrl, link}: CardProps) {
 }
 
 export default function Menu() {
-    const [menuData, setMenuData] = useState<Strapi>();
+    const [menuData, setMenuData] = useState<StrapiData>();
     useEffect(() => {
         const fetchMenuData = async() => {
             const response = await MenuLijst();

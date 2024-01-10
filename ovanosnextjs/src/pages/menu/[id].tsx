@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MenuItems } from "../api/apiService";
 import { Header } from "@/components/header";
 import { Navigation } from "@/components/navigation";
-import { Menu } from "@/interfaces/Menu";
+import { MenuData } from "@/interfaces/Menu";
 
 export interface ProductCardProps {
     productName: string,
@@ -48,12 +48,12 @@ export function ProductItem({ productName, productDescription, imageLink, price 
 
 export default function Post() {
     const router = useRouter();
-    const [menuItems, setMenuItems] = useState<Menu>();
+    const [menuItems, setMenuItems] = useState<MenuData>();
     useEffect(() => {
         const fetchItems = async () => {
             if (router.query.id) {
                 let res = await fetch(`http://localhost:1337/api/${router.query.id}?populate=*`);
-                let data: Menu = await res.json();
+                let data: MenuData = await res.json();
                 setMenuItems(data);
             }
         };
