@@ -1,6 +1,12 @@
 
 # Ovanos
 
+Vercel Link : 
+
+Youtube video link : https://youtu.be/DCQdR27nd60
+
+
+
 Webframeworks Project dat staat op 30% van mijn eindresultaat.
 
 
