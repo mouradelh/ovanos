@@ -4,8 +4,7 @@ import { link } from "fs"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { AllBlogPosts } from "../api/apiService"
-import { BlogPosts } from ".."
-import { Blogposts } from "@/interfaces/blogpost"
+import { Blogposts } from "../../interfaces/Blogpost"
 
 interface BlogCardProps {
     id: number,

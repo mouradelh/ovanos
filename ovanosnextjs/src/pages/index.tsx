@@ -5,7 +5,7 @@ import { Navigation } from '@/components/navigation'
 import { useEffect, useState } from 'react'
 import assert from 'assert'
 import { RecentBlogPosts } from './api/apiService'
-import { Blogposts } from '@/interfaces/blogpost'
+import { Blogposts } from '@/interfaces/Blogpost'
 require('dotenv').config();
 const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT;
 

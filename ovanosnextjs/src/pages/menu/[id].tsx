@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MenuItems } from "../api/apiService";
 import { Header } from "@/components/header";
 import { Navigation } from "@/components/navigation";
-import { Menu } from "@/interfaces/menu";
+import { Menu } from "@/interfaces/Menu";
 
 export interface ProductCardProps {
     productName: string,

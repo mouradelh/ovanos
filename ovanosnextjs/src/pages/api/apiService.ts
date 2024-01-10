@@ -1,14 +1,14 @@
 
 import { GetServerSideProps } from 'next';
 import qs from 'qs'
-import { Strapi } from '@/interfaces/strapi';
+import { Strapi } from '@/interfaces/Strapi';
 import { env } from 'process';
-import { Menu } from '@/interfaces/menu';
-import { Logo } from '@/interfaces/logo';
-import { Blogposts } from '@/interfaces/blogpost';
-import { Medewerker } from '@/interfaces/medewerker';
+import { Menu } from '@/interfaces/Menu';
+import { Logo } from '@/interfaces/Logo';
+import { Blogposts } from '@/interfaces/Blogpost';
+import { Medewerker } from '@/interfaces/Medewerker';
 
-const serverEndpoint = process.env.SERVER_ENDPOINT || '192.168.1.18'
+const serverEndpoint = process.env.SERVER_ENDPOINT || 'localhost'
 
 export const LogoImage = async():Promise<Logo> => {
   const params = {

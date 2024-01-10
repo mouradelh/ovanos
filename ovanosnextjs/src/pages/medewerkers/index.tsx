@@ -3,7 +3,7 @@ import { Navigation } from "@/components/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AllMedewerkers } from "../api/apiService";
-import { Medewerker } from "@/interfaces/medewerker";
+import { Medewerker } from "@/interfaces/Medewerker";
 
 export interface Personeel {
     id: number,
