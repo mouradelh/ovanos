@@ -1,11 +1,11 @@
 import { Header } from "@/components/header"
 import { Navigation } from "@/components/navigation"
-import { Blogposts } from "@/interfaces/blogpost"
 import { link } from "fs"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { AllBlogPosts } from "../api/apiService"
 import { BlogPosts } from ".."
+import { Blogposts } from "@/interfaces/blogpost"
 
 interface BlogCardProps {
     id: number,

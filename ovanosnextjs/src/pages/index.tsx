@@ -3,9 +3,9 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { Navigation } from '@/components/navigation'
 import { useEffect, useState } from 'react'
-import { Blogposts } from '@/interfaces/blogpost'
 import assert from 'assert'
 import { RecentBlogPosts } from './api/apiService'
+import { Blogposts } from '@/interfaces/blogpost'
 require('dotenv').config();
 const SERVER_ENDPOINT = process.env.SERVER_ENDPOINT;
 
